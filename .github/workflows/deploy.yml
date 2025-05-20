@@ -1,11 +1,36 @@
-name: Deploy to GitHub Pages
-on: [push]
+name: Build and Deploy to Pages
+
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Deploy
-        uses: actions/deploy-pages@v3
+
+      # （可选）构建命令，例如 npm run build
+      - name: Build site
+        run: echo "Static site ready"  
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          folder: .
+          path: .            # 或者 './dist'、'./build' 等你的网站输出目录
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v3
