@@ -1,0 +1,11 @@
+name: Deploy to GitHub Pages
+on: [push]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy
+        uses: actions/deploy-pages@v3
+        with:
+          folder: .
