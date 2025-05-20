@@ -16,6 +16,9 @@ jobs:
     runs-on: ubuntu-latest
 
     # ⚠️ 这里必须加上 environment，否则 deploy-pages 找不到 pages 环境
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
 
