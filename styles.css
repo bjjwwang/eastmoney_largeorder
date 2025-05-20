@@ -1,0 +1,145 @@
+/* styles.css */
+
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* 页面容器 */
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .container {
+    width: 100%;
+    max-width: 800px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+  }
+  
+  /* 标题 */
+  h1 {
+    font-size: 1.75rem;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  
+  /* 输入和按钮 */
+  #stockCode {
+    width: calc(100% - 120px);
+    padding: 8px 12px;
+    font-size: 1rem;
+    border: 1px solid #ccd0d5;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+  }
+  
+  #stockCode:focus {
+    border-color: #409eff;
+  }
+  
+  #fetchBtn {
+    width: 100px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    background-color: #409eff;
+    color: #fff;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  #fetchBtn:hover {
+    background-color: #66b1ff;
+  }
+  
+  /* 表格样式 */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 24px;
+    font-size: 0.95rem;
+  }
+  
+  thead {
+    background-color: #f0f2f5;
+  }
+  
+  th,
+  td {
+    padding: 8px 12px;
+    border: 1px solid #e4e7ed;
+    text-align: center;
+  }
+  
+  th {
+    font-weight: 600;
+  }
+  
+  /* 奇偶行不同底色 */
+  tbody tr:nth-child(odd) {
+    background-color: #fafafa;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #fff;
+  }
+  
+  /* 响应式 */
+  @media (max-width: 600px) {
+    .container {
+      padding: 16px;
+    }
+    #stockCode,
+    #fetchBtn {
+      width: 100%;
+      border-radius: 4px;
+    }
+    #fetchBtn {
+      margin-top: 8px;
+    }
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+      display: block;
+    }
+    thead tr {
+      display: none;
+    }
+    tbody tr {
+      margin-bottom: 12px;
+      border: 1px solid #e4e7ed;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    td {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px;
+      border: none;
+      border-bottom: 1px solid #e4e7ed;
+    }
+    td:last-child {
+      border-bottom: none;
+    }
+    td::before {
+      content: attr(data-label);
+      font-weight: 600;
+      flex: 1;
+      text-align: left;
+    }
+  }
+  
